@@ -1,7 +1,7 @@
 from utils import wait_for_all
 
 clear()
-set_world_size(max_drones() - 1)
+set_world_size(max_drones())
 world_size = get_world_size()
 done = False
 
@@ -33,8 +33,12 @@ def plant_pumpkins():
 	global world_size
 	drones = []
 	
-	for i in range(world_size):
+	for i in range(world_size - 1):
 		drones.append(spawn_drone(plant_column))
+		move(East)
+
+	if get_pos_x() == world_size - 1:
+		plant_column()
 		move(East)
 	
 	wait_for_all(drones)
