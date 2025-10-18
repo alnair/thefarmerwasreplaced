@@ -1,18 +1,16 @@
-clear()
-world_size = get_world_size()
+# max_drones = 32
+# world_size = 32
 
 def drone_action():
-	global world_size
-
-	for j in range(world_size):
+	while True:
 		harvest()
 		move(North)
+		
 
-while True:
-	for i in range(world_size):	
-		spawn_drone(drone_action)
+clear()
+for i in range(max_drones() - 1):
+	spawn_drone(drone_action)
+	move(East)
 
-		while num_drones() >= max_drones():
-			pass
-
-		move(East)
+drone_action()
+	
